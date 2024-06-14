@@ -1,0 +1,2 @@
+# autobot
+Automated MLOps bots.
