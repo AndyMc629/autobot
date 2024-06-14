@@ -41,7 +41,7 @@ def test_simple_simulation_with_invalid_model(data):
         sim = Simulation("invalid_model")
         sim.simulate_prediction(prediction_input=data[0])
 
-def test_simple_simulation_with_no_input_data():
+def test_simple_simulation_with_no_input_data(model):
     # Test case: Verify that a ValueError is raised when no input data is provided.
     sim = Simulation(model)
     with pytest.raises(ValueError):

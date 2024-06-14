@@ -24,11 +24,14 @@ class Simulation(object):
     def get_prediction_input(self, *args, **kwargs):
         if 'prediction_input' in kwargs:
             return kwargs['prediction_input']
+        elif 'prediction_input' in self.kwargs:
+            return self.kwargs['prediction_input']
         else:
-            ValueError("No prediction input data provided")
+            raise ValueError("No prediction input data provided")
             
     def simulate_prediction(self, *args, **kwargs):
-        predictions = self.model.predict(self.get_prediction_input(*args, **kwargs))
+        prediction_input = self.get_prediction_input(*args, **kwargs)
+        predictions = self.model.predict(prediction_input)        
         return predictions
     
 # from model import Model
