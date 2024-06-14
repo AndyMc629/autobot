@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "autobot"
+version = "0.1.0"
+description = ""
+authors = ["andymc629 <andrewpmcmahon629@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^8.2.2"
+scikit-learn = "^1.5.0"
+black = "^24.4.2"
+flake8 = "^7.0.0"
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
