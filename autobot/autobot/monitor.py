@@ -57,26 +57,24 @@ class Monitor(object):
             metric_kwargs = self.kwargs.copy()
             metric_kwargs.update(kwargs)
             results[metric.__name__] = metric(self.truth, self.predictions, *args, **metric_kwargs) # TODO: Should I validate the .__name__ method in the setter?
-        
-            #results[metric.__name__] = metric(self.truth, self.predictions, **kwargs) 
         return results
 
-# Example of using monitor
-from sklearn.metrics import precision_score, recall_score, f1_score
-from sklearn.preprocessing import StandardScaler
-from model import Model
-from sklearn.linear_model import RidgeClassifier
-from sklearn.datasets import load_iris
+# # Example of using monitor
+# from sklearn.metrics import precision_score, recall_score, f1_score #note: these all require the 'average' parameter
+# from sklearn.preprocessing import StandardScaler
+# from model import Model
+# from sklearn.linear_model import RidgeClassifier
+# from sklearn.datasets import load_iris
 
-iris = load_iris()
-X = StandardScaler().fit_transform(iris.data)  # iris.data
-y = iris.target
-ridge_classifier= RidgeClassifier()
-model = Model(ridge_classifier)
-model.fit(X=X, y=y)
+# iris = load_iris()
+# X = StandardScaler().fit_transform(iris.data)  # iris.data
+# y = iris.target
+# ridge_classifier= RidgeClassifier()
+# model = Model(ridge_classifier)
+# model.fit(X=X, y=y)
 
-predictions = model.predict(X)
-monitor = Monitor(predictions, y, [precision_score, recall_score, f1_score], average='macro')
+# predictions = model.predict(X)
+# monitor = Monitor(predictions, y, [precision_score, recall_score, f1_score], average='macro')
 
-# Print monitor results
-print(f"Monitor results: {monitor.calculate_metrics()}")
+# # Print monitor results
+# print(f"Monitor results: {monitor.calculate_metrics()}")
