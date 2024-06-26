@@ -10,7 +10,7 @@ def data():
     X = StandardScaler().fit_transform(iris.data)  # iris.data
     y = iris.target
     return [X,y]
-    
+
 @pytest.fixture
 def model(data):
     from sklearn.linear_model import LogisticRegression
