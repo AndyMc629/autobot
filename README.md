@@ -46,6 +46,7 @@ simulation.simulate_prediction(prediction_input=X)
 
 # Simulate truth data
 simulation.simulate_truth(truth=y)
+```
 
 ### Monitoring Model Performance
 Use the `Monitor` class to calculate performance metrics and configure alerts:
