@@ -46,3 +46,23 @@ def test_simple_simulation_with_no_input_data(model):
     sim = Simulation(model)
     with pytest.raises(ValueError):
         sim.simulate_prediction()
+        
+def test_truth_data(model, data):
+    sim = Simulation(model, truth=data[1])
+    assert(len(sim.simulate_truth()) == len(data[1]))
+    assert(sim.simulate_truth().all() == data[1].all())
+
+def test_truth_data_without_truth_data(model):
+    sim = Simulation(model)
+    with pytest.raises(ValueError):
+        sim.simulate_truth()
+        
+def test_truth_data_supplied_as_kwargs_at_call(model, data):
+    sim = Simulation(model)
+    assert(len(sim.simulate_truth(truth=data[1])) == len(data[1]))
+    assert(sim.simulate_truth(truth=data[1]).all() == data[1].all())
+    
+def test_truth_data_with_invalid_model(data):
+    with pytest.raises(ValueError):
+        sim = Simulation("invalid_model", truth=data[1])
+        sim.simulate_truth()

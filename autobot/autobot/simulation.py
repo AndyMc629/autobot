@@ -5,6 +5,7 @@ class Simulation(object):
     def __init__(self, model, **kwargs):
         self.model = model
         self.kwargs = kwargs
+        self.predictions = None
     
     # validate that model is of type Model using property and setter.
     @property
@@ -31,8 +32,20 @@ class Simulation(object):
             
     def simulate_prediction(self, *args, **kwargs):
         prediction_input = self.get_prediction_input(*args, **kwargs)
-        predictions = self.model.predict(prediction_input)        
+        predictions = self.model.predict(prediction_input)
+        self.predictions = predictions # TODO: find out if this is bad practice       
         return predictions
+    
+    def simulate_truth(self, *args, **kwargs):
+        if 'truth' in kwargs:
+            return kwargs['truth']
+        elif 'truth' in self.kwargs:
+            return self.kwargs['truth']
+        elif self.predictions is not None:
+            print("Truth data not provided. Using predictions as truth.") #TODO: Configure logging.
+            return self.predictions
+        else:
+            raise ValueError("No truth data provided and no predictions provided. Cannot set truth")
     
 # from model import Model
 # from sklearn.linear_model import LogisticRegression
