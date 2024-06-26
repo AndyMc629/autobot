@@ -99,20 +99,20 @@ for alert in alerts:
             print(f"Alert: {alert.name} - {alert.description} - Metric Value: {metric_value}")
 ```
 
-### 4. Modules, Contributing, and License
+## 4. Modules, Contributing, and License
 
-## Modules
+### Modules
 
 - **alert.py**: Contains the `Alert` dataclass for defining alert configurations.
 - **model.py**: Defines the `Model` class for wrapping machine learning models.
 - **monitor.py**: Contains the `Monitor` class for calculating performance metrics and managing alerts.
 - **simulation.py**: Provides the `Simulation` class for simulating model predictions and truth data.
 
-## Contributing
+### Contributing
 
 Contributions are welcome! Please submit a pull request or open an issue to discuss any changes or improvements.
 
-## License
+### License
 
 This project is licensed under the MIT License.
 ```
